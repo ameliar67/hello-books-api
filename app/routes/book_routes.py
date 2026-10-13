@@ -1,5 +1,5 @@
 from flask import Blueprint
-from app.models.book import books
+from app.models.books import books
 
 books_bp = Blueprint("books_bp", __name__, url_prefix="/books")
 
@@ -26,3 +26,4 @@ def get_one_book(book_id):
                 "title": book.title,
                 "description": book.description,
             }
+    return {"message": f"book {book_id} not found"}, 404
