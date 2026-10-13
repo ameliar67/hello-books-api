@@ -18,7 +18,10 @@ def get_all_books():
 
 @books_bp.get("/<book_id>")
 def get_one_book(book_id):
-    book_id = int(book_id)
+    try:
+        book_id = int(book_id)
+    except:
+        return {"message": f"book {book_id} invalid"}, 400
     for book in books:
         if book.id == book_id:
             return {
